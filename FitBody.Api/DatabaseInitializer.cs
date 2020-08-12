@@ -239,9 +239,9 @@ namespace FitBody.Api
                 Weight = 65.0f,
                 Info = "I am a trainer and you're not",
                 Mobile = "+38673265313",
-                UserName = "arman",
+                UserName = "blogger",
                 PasswordSalt = armanSalt,
-                PasswordHash = UserService.GenerateHash(armanSalt, "arman"),
+                PasswordHash = UserService.GenerateHash(armanSalt, "blogger"),
                 Active = true,
                 Gender = "Male"
             };
@@ -261,9 +261,9 @@ namespace FitBody.Api
                 Weight = 98.0f,
                 Info = "",
                 Mobile = "+38673265314",
-                UserName = "dzeno",
+                UserName = "user",
                 PasswordSalt = dzenoSalt,
-                PasswordHash = UserService.GenerateHash(dzenoSalt, "dzeno"),
+                PasswordHash = UserService.GenerateHash(dzenoSalt, "user"),
                 Active = true,
                 Gender = "Male"
             };
