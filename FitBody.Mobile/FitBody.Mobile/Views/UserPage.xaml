@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:converters="clr-namespace:FitBody.Mobile.Converters"
+             mc:Ignorable="d"
+             x:Class="FitBody.Mobile.Views.UserPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Back" Clicked="Cancel_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ByteArrayToImageSourceConverter x:Key="ByteArrayToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="5" >
+                <StackLayout HorizontalOptions="Center">
+                    <Image Source="{Binding Image, 
+                        Converter={StaticResource ByteArrayToImage}}" />
+                    <Label Text="{Binding UserName, StringFormat='UserName: \{0}'}"
+                           FontSize="Small" HorizontalOptions="Start" />
+                    <Label Text="{Binding FirstName, StringFormat='FirstName: \{0}'}"
+                           FontSize="Small" HorizontalOptions="Start"/>
+                    <Label Text="{Binding LastName, StringFormat='LastName: \{0}'}"
+                           FontSize="Small" HorizontalOptions="Start"/>
+                    <Label Text="{Binding BirthDate, StringFormat='Born on: \{0:dd MMM, yyyy}'}"
+                           FontSize="Small" HorizontalOptions="Start"/>
+                    <Label Text="{Binding Mobile, StringFormat='Mobile: \{0}'}"
+                           FontSize="Small" HorizontalOptions="Start"/>
+                    <Label Text="{Binding Email, StringFormat='Email: \{0}'}"
+                           FontSize="Small" HorizontalOptions="Start"/>
+                    <Label Text="{Binding Info, StringFormat='Info: \{0}'}"
+                           FontSize="Small" HorizontalOptions="Start"/>
+                    <Label Text="{Binding Height, StringFormat='Height: \{0}'}"
+                           FontSize="Small" HorizontalOptions="Start"/>
+                    <Label Text="{Binding Weight, StringFormat='Weight: \{0}'}"
+                           FontSize="Small" HorizontalOptions="Start"/>
+                    <Label Text="{Binding Active, StringFormat='Active: \{0}'}"
+                           FontSize="Small" HorizontalOptions="Start"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                    <button:SfButton x:Name="followButton" Text="Follow" 
+                                     HeightRequest="30" Clicked="followButton_Clicked"></button:SfButton>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Suggest a topic:"></Label>
+                    <Entry x:Name="Topic"></Entry>
+                    <button:SfButton x:Name="toppicButton" Text="Suggest a topic" 
+                                     HeightRequest="30" Clicked="topicButton_Clicked"></button:SfButton>
+                    <button:SfButton x:Name="logoutButton" Text="Logout" 
+                                     HeightRequest="30" Clicked="logoutButton_Clicked"></button:SfButton>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

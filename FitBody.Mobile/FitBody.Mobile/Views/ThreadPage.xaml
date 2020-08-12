@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             x:Class="FitBody.Mobile.Views.ThreadPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Back" Clicked="Cancel_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+            <Label Text="{Binding Title}"
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Large"/>
+
+            <Label Text="Content:" FontSize="Medium" />
+            <Label Text="{Binding Content}" d:Text="Item description" />
+
+            <StackLayout >
+                <Label Text="{Binding Username, StringFormat='Added by: \{0}'}"
+                           FontSize="Small" HorizontalOptions="End"/>
+                <Label Text="{Binding DateCreated, StringFormat='Added on: \{0:dd MMM, yyyy}'}"
+                           FontSize="Small" HorizontalOptions="End"/>
+            </StackLayout>
+            <button:SfButton x:Name="openProfileButton" Text="Open profile" 
+                                     HeightRequest="30" Clicked="openProfileButton_Clicked"></button:SfButton>
+
+            <StackLayout >
+                <Label Text="Comment:"></Label>
+                <Entry x:Name="Comment"></Entry>
+                <button:SfButton x:Name="commentButton" Text="Comment" 
+                                 HeightRequest="30" Clicked="commentButton_Clicked"></button:SfButton>
+            </StackLayout>
+            <StackLayout >
+                <!--Comments-->
+                <Label Text="Comments" FontSize="14" />
+                <StackLayout>
+                    <ListView ItemsSource="{Binding Comments}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="10">
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding Username}" 
+                                                       FontSize="14" />
+                                            <Label Text="{Binding Content}" 
+                                                       FontSize="14" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

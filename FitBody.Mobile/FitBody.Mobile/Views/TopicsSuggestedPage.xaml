@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:FitBody.Mobile.ViewModels" xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             x:Class="FitBody.Mobile.Views.TopicsSuggestedPage">
+    <ContentPage.BindingContext>
+        <vm:TopicsSuggestedViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+            <ListView ItemsSource="{Binding TopicsSuggestedList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5" StyleClass="Content">
+                                <ContentView Padding="5,0,0,0">
+                                    <Label Text="{Binding Topic}" />
+                                </ContentView>
+                                <Label Text="{Binding DateCreated, StringFormat='Added on: \{0:dd MMM, yyyy}'}" HorizontalOptions="End"/>
+                                <button:SfButton x:Name="cancelButton" Text="Decline" 
+                                     HeightRequest="30" Clicked="cancelButton_Clicked"></button:SfButton>
+                                <button:SfButton x:Name="addButton" Text="Accept" 
+                                     HeightRequest="30" Clicked="addButton_Clicked"></button:SfButton>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

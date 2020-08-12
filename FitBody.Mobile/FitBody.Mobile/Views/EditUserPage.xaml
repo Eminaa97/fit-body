@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:converters="clr-namespace:FitBody.Mobile.Converters"
+             mc:Ignorable="d"
+             x:Class="FitBody.Mobile.Views.EditUserPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ByteArrayToImageSourceConverter x:Key="ByteArrayToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="5" HorizontalOptions="Center">
+                <Image Source="{Binding Image, 
+                    Converter={StaticResource ByteArrayToImage}}" />
+                <Label Text="Username: "/>
+                <Entry Text="{Binding Username}" FontSize="Small"></Entry>
+                <Label Text="FirstName: "/>
+                <Entry Text="{Binding FirstName}" FontSize="Small"></Entry>
+                <Label Text="LastName: "/>
+                <Entry Text="{Binding LastName}" FontSize="Small"></Entry>
+                <Label Text="Info: "/>
+                <Entry Text="{Binding Info}" FontSize="Small"></Entry>
+                <Label Text="Email: "/>
+                <Entry Text="{Binding Email}" FontSize="Small" Keyboard="Email"></Entry>
+                <Label Text="Weight: "/>
+                <Entry Text="{Binding Weight}" FontSize="Small" Keyboard="Numeric"></Entry>
+                <Label Text="Height: "/>
+                <Entry Text="{Binding Height}" FontSize="Small" Keyboard="Numeric"></Entry>
+                <Label Text="Mobile: "/>
+                <Entry Text="{Binding Mobile}" FontSize="Small" Keyboard="Telephone"></Entry>
+                <button:SfButton x:Name="saveButton" Text="Save" 
+                             HeightRequest="30" Clicked="saveButton_Clicked"></button:SfButton>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
