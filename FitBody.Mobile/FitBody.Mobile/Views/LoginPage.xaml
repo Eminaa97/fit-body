@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:FitBody.Mobile.ViewModels"
+             xmlns:vm="clr-namespace:FitBody.Mobile.ViewModels" 
+             xmlns:converters="clr-namespace:FitBody.Mobile.Converters"
              mc:Ignorable="d"
              x:Class="FitBody.Mobile.Views.LoginPage">
 
@@ -11,10 +12,15 @@
         <vm:LoginViewModel />
     </ContentPage.BindingContext>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ByteArrayToImageSourceConverter x:Key="ByteArrayToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <StackLayout Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-            <!--TBA-->
-            <!--<Image x:Name="Logo" Source="logo.png" WidthRequest="200"></Image>-->
+            <Image Source="{Binding Image, Converter={StaticResource ByteArrayToImage}}" />
 
             <Label Text="Username:"></Label>
             <Entry Text="{Binding Username}"></Entry>
