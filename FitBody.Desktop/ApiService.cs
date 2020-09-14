@@ -137,6 +137,11 @@ namespace FitBody.Desktop
 
 
             string file = $@"C:\Reports\{filename}";
+            string path = Path.GetDirectoryName(file);
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
             if (!File.Exists(file))
             {
                 using (var fs = new FileStream(file, FileMode.Create, FileAccess.Write))
