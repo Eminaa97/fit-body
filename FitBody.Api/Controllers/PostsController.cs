@@ -107,6 +107,13 @@ namespace FitBody.Api.Controllers
             return Ok();
         }
 
+        [HttpPut("{id:int}")]
+        public IActionResult Update(int id, [FromBody] PostUpdateModel post)
+        {
+            _postService.Update(post);
+            return Ok();
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
