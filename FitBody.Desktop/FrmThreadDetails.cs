@@ -33,11 +33,18 @@ namespace FitBody.Desktop
             txtDateCreated.Text = thread.DateCreated.ToString();
             txtDateCreated.ReadOnly = true;
 
-            dgvComments.Columns[0].Visible = false;
-            dgvComments.Columns[3].Visible = false;
-            dgvComments.Columns[4].Visible = false;
-
             dgvComments.DataSource = await _commentService.Get<IList<CommentDto>>(null, $"threads/{thread.Id}");
+
+            try
+            {
+                dgvComments.Columns[0].Visible = false;
+                dgvComments.Columns[3].Visible = false;
+                dgvComments.Columns[4].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
