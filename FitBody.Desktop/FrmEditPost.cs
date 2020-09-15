@@ -65,9 +65,16 @@ namespace FitBody.Desktop
                 var subcategory = slctSubcategory.SelectedItem as SubcategoryDto;
 
                 if (subcategory != null)
-
                 {
-                    var tags = txtTags.Text.Split(',');
+                    List<string> tags = new List<string>();
+                    foreach (var item in txtTags.Text.Split(','))
+                    {
+                        if (!string.IsNullOrEmpty(item) && !string.IsNullOrWhiteSpace(item))
+                        {
+                            tags.Add(item.Trim());
+                        }
+                    }
+
                     PostUpdateModel model = new PostUpdateModel
                     {
                         Title = txtTitle.Text,

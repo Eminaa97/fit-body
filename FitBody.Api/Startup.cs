@@ -93,6 +93,7 @@ namespace FitBody
                         ValidateIssuer = false,
                         ValidateAudience = false
                     };
+                    /*
                     options.Events = new JwtBearerEvents
                     {
                         OnAuthenticationFailed = ctx =>
@@ -107,6 +108,7 @@ namespace FitBody
                             return ctx.Response.WriteAsync(JsonConvert.SerializeObject(new { message = "Unauthorized" }));
                         }
                     };
+                    */
                 });
 
             services.AddDbContext<FitBodyContext>(options =>

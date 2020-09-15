@@ -271,6 +271,20 @@ namespace FitBody.Api
             context.SaveChanges();
             #endregion
 
+            #region User followings
+            context.UsersFollows.Add(new UserFollow
+            {
+                UserFollowed = admin,
+                UserFollowing = user
+            });
+            context.UsersFollows.Add(new UserFollow
+            {
+                UserFollowed = blogger,
+                UserFollowing = user
+            });
+            context.SaveChanges();
+            #endregion
+
             var post = new Post
             {
                 Title = "Kako fizička aktivnost poboljšava ukupno zdravlje i štiti od bolesti?",

@@ -23,11 +23,21 @@ namespace FitBody.Mobile.ViewModels
                 try
                 {
                     IsBusy = true;
-                    var authentication = await _usersService.Post<AuthenticatedUser>(new UserLoginRequest
+                    AuthenticatedUser authentication = null;
+
+                    try
                     {
-                        UserName = Username,
-                        Password = Password
-                    }, "login");
+                        authentication = await _usersService.Post<AuthenticatedUser>(new UserLoginRequest
+                        {
+                            UserName = Username,
+                            Password = Password
+                        }, "login");
+                    }
+                    catch (Exception)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error", "Login failed, please check your username and password", "OK");
+                        return;
+                    }
 
                     if (authentication != null)
                     {
@@ -56,7 +66,9 @@ namespace FitBody.Mobile.ViewModels
                         Application.Current.MainPage = new MainPage();
                     }
                     else
+                    {
                         await Application.Current.MainPage.DisplayAlert("Error", "Login failed, please check your username and password", "OK");
+                    }
                 }
                 catch (Exception ex)
                 {

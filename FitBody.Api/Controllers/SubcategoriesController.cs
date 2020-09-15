@@ -1,5 +1,6 @@
 ﻿using FitBody.Common.Contracts;
 using FitBody.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FitBody.Api.Controllers
@@ -28,6 +29,7 @@ namespace FitBody.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Insert(SubcategoryInsertModel category)
         {
             _subcategoryService.Insert(category);
@@ -35,6 +37,7 @@ namespace FitBody.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             _subcategoryService.Delete(id);

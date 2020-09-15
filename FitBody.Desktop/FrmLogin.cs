@@ -41,7 +41,24 @@ namespace FitBody.Desktop
                     Password = txtPassword.Text
                 };
 
-                var user = await _usersService.Post<AuthenticatedUser>(request, "login");
+                AuthenticatedUser user = null;
+                try
+                {
+                    user = await _usersService.Post<AuthenticatedUser>(request, "login");
+                }
+                catch (System.Exception)
+                {
+                    MessageBox.Show("Incorrect username or password", "Error", MessageBoxButtons.OK);
+                    btnLogin.Enabled = true;
+                    return;
+                }
+
+                if (user == null)
+                {
+                    MessageBox.Show("Incorrect username or password", "Error", MessageBoxButtons.OK);
+                    btnLogin.Enabled = true;
+                    return;
+                }
 
                 ApiService.Token = user.Token;
                 ApiService.Permission = user.Permission;

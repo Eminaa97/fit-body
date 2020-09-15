@@ -1,6 +1,7 @@
 ﻿using FitBody.Common.Contracts;
 using FitBody.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace FitBody.Api.Controllers
 {
@@ -40,9 +41,17 @@ namespace FitBody.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Insert(TagInsertModel category)
+        public IActionResult Insert(TagInsertModel tagModel)
         {
-            _tagService.Insert(category);
+            var exists = _tagService.Get(new TagSearchRequest
+            {
+                Title = tagModel.Title
+            }).FirstOrDefault();
+
+            if (exists == null)
+            {
+                _tagService.Insert(tagModel);
+            }
             return Ok();
         }
 

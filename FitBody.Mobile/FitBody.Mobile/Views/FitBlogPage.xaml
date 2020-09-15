@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:FitBody.Mobile.ViewModels"
              mc:Ignorable="d"
-             x:Class="FitBody.Mobile.Views.FitBlogPage">
+             x:Class="FitBody.Mobile.Views.FitBlogPage"
+             Title="Posts by users you follow">
     <ContentPage.BindingContext>
         <vm:PostsViewModel/>
     </ContentPage.BindingContext>

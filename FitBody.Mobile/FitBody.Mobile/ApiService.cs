@@ -79,9 +79,12 @@ namespace FitBody.Mobile
             }
             catch (FlurlHttpException ex)
             {
-                var stringBuilder = new StringBuilder(ex.Message);
+                if (action != "login")
+                {
+                    var stringBuilder = new StringBuilder(ex.Message);
 
-                await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                    await Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                }
                 return default;
             }
         }

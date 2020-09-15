@@ -74,8 +74,11 @@ namespace FitBody.Desktop
             }
             catch (FlurlHttpException ex)
             {
-                var stringBuilder = new StringBuilder(ex.Message);
-                MessageBox.Show(stringBuilder.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (action != "login")
+                {
+                    var stringBuilder = new StringBuilder(ex.Message);
+                    MessageBox.Show(stringBuilder.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 return default(T);
             }
         }

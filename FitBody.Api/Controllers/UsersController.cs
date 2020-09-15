@@ -71,7 +71,14 @@ namespace FitBody.Api.Controllers
         [AllowAnonymous]
         public IActionResult Login(UserLoginRequest request)
         {
-            return Ok(_userService.Login(request));
+            try
+            {
+                return Ok(_userService.Login(request));
+            }
+            catch
+            {
+                return BadRequest("Invalid username or password");
+            }
         }
 
         [HttpPost("follow/{userId}")]
